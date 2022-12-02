@@ -50,10 +50,12 @@ var add_og_image_to_html = (file, buffer, options) => {
    // Remove Emojis as those are unsupported
   if (_title) {
     _title = _title.replace(EMOJI_REGEX, "");
+    _title.trim();
   }
 
   if (_description) {
     _description = _description.replace(EMOJI_REGEX, "");
+    _description.trim();
   }
 
   return Promise.resolve()
