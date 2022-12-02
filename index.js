@@ -28,6 +28,10 @@ var add_og_image_to_html = (file, buffer, options) => {
   let _directory   = options.directory(file);
   let _name        = Path.parse(file.path).name;
 
+  if (options.name) {
+    _name = options.name(file);
+  }
+
   if (options.title) {
     _title = options.title(file, $);
   } else {
