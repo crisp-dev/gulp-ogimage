@@ -1,6 +1,6 @@
 {
   "name": "gulp-ogimage",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Generate OG Images automatically using Gulp and node-canvas",
   "author": "",
   "main": "index.js",
