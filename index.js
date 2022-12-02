@@ -8,7 +8,7 @@ const fs          = require("fs");
 
 const BACKGROUND_CACHE = {};
 
-const OG_IMAGE_REGEX   = /<meta.*property="og:image".*content="(.*)".*\/?>/;
+const OG_IMAGE_REGEX   = /<meta\s*property="og:image"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
 
 Canvas.registerFont(__dirname + "/res/opensans_regular.ttf", {
   family: "Open Sans",
