@@ -9,6 +9,9 @@ const fs          = require("fs");
 const BACKGROUND_CACHE = {};
 
 const OG_IMAGE_REGEX   = /<meta\s*property="og:image"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
+const TWITTER_SRC_REGEX   = /<meta\s*name="twitter:image:src"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
+
+twitter:image:src
 
 Canvas.registerFont(__dirname + "/res/opensans_regular.ttf", {
   family: "Open Sans",
@@ -176,6 +179,10 @@ var replace_og_image = (buffer, options) => {
   let _path = options.base(options) + "/" + options.name + ".png";
 
   _html = _html.replace(OG_IMAGE_REGEX, (match, url) => {
+    return match.replace(url, _path);
+  });
+
+  _html = _html.replace(TWITTER_SRC_REGEX, (match, url) => {
     return match.replace(url, _path);
   });
 
