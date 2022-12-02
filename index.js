@@ -11,8 +11,6 @@ const BACKGROUND_CACHE = {};
 const OG_IMAGE_REGEX   = /<meta\s*property="og:image"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
 const TWITTER_SRC_REGEX   = /<meta\s*name="twitter:image:src"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
 
-twitter:image:src
-
 Canvas.registerFont(__dirname + "/res/opensans_regular.ttf", {
   family: "Open Sans",
   weight: "regular"
