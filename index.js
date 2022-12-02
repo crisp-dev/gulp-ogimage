@@ -65,7 +65,8 @@ var add_og_image_to_html = (file, buffer, options) => {
       return Promise.resolve(
         replace_og_image(buffer, {
           name: _name,
-          base: options.base
+          base: options.base,
+          file: file
         })
       );
     })
@@ -174,7 +175,7 @@ var build_og_image = (parameters) => {
 
 var replace_og_image = (buffer, options) => {
   let _html = buffer.toString();
-  let _path = options.base(options) + "/" + options.name + ".png";
+  let _path = options.base(options.file, options) + "/" + options.name + ".png";
 
   _html = _html.replace(OG_IMAGE_REGEX, (match, url) => {
     return match.replace(url, _path);
