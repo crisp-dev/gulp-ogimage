@@ -5,12 +5,14 @@ const Canvas      = require("canvas");
 const Path        = require("path");
 const cheerio     = require("cheerio");
 const fs          = require("fs");
+const emojiRegex  = require("emoji-regex");
+
 
 const BACKGROUND_CACHE = {};
 
-const OG_IMAGE_REGEX   = /<meta\s*property="og:image"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
-const TWITTER_SRC_REGEX   = /<meta\s*name="twitter:image:src"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
-
+const OG_IMAGE_REGEX    = /<meta\s*property="og:image"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
+const TWITTER_SRC_REGEX = /<meta\s*name="twitter:image:src"\s*content="([A-Za-z0-9;:\/?.]*)"\s*\/?>/;
+const EMOJI_REGEX       = emojiRegex();
 Canvas.registerFont(__dirname + "/res/opensans_regular.ttf", {
   family: "Open Sans",
   weight: "regular"
@@ -43,6 +45,15 @@ var add_og_image_to_html = (file, buffer, options) => {
     _description = options.description(file, $);
   } else {
     _description = extract_description(file, $);
+  }
+
+   // Remove Emojis as those are unsupported
+  if (_title) {
+    _title = _title.replace(EMOJI_REGEX, "");
+  }
+
+  if (_description) {
+    _description = _description.replace(EMOJI_REGEX, "");
   }
 
   return Promise.resolve()
