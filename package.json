@@ -9,7 +9,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "canvas": "2.11.2",
+    "canvas": "3.2.0",
     "cheerio": "1.0.0-rc.12",
     "emoji-regex": "10.2.1",
     "gulp": "4.0.2",
